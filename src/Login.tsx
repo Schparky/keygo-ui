@@ -1,5 +1,5 @@
 import { GET } from './data/api'
-import { getSeed } from './data/token'
+import { getClientID } from './data/token'
 
 interface Provider {
   Key: string;
@@ -9,7 +9,7 @@ interface Provider {
 
 export default function Login() {
   async function handleClick() {
-    const providers = await GET(`/auth/login?client_id=${getSeed()}`)
+    const providers = await GET(`/auth/login?client_id=${getClientID()}`)
 
     // TODO: ask user what provider they want to use
     const google = providers.find((element: Provider) => element.Key === 'google')  
