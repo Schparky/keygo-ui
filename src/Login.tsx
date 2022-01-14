@@ -1,15 +1,19 @@
-import { POST } from './data/api'
+import { GET } from './data/api'
+import { getSeed } from './data/token'
+
+interface Provider {
+  Key: string;
+  Name: string;
+  RedirectURL: string;
+}
 
 export default function Login() {
   async function handleClick() {
-    const providers = await POST('/auth/login?client_id=abc123client')
+    const providers = await GET(`/auth/login?client_id=${getSeed()}`)
 
-    console.log(providers)
-    if (providers?.length > 0) {
-      window.location = providers[1].RedirectURL
-    }
-
-    // ask user what provider they want to use
+    // TODO: ask user what provider they want to use
+    const google = providers.find((element: Provider) => element.Key === 'google')  
+    window.location = google.RedirectURL
   }
  
   return (

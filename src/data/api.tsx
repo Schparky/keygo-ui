@@ -21,7 +21,7 @@ export async function wrappedFetch(method: string, url: string, body?: string) {
   try {
     // reminder: fetch does not throw exceptions for non-200 responses (https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch)
     // const response = await fetch(`${process.env.BASE_API_URL}/${url}`, {
-    response = await fetch(`http://keygo.local:1323${url}`, {
+    response = await fetch(`http://localhost:1323${url}`, {
       method,
       credentials: 'include', // ensures the response back from the api will be allowed to "set-cookie"
       headers,
