@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react'
 export default function App() {
   const [user, setUser] = useState<User | null>(null)
 
-  useEffect(() => { getUser().then(data => setUser(data)) }, [user])
+  useEffect(() => updateUser, [])
 
   return (
     <>
@@ -19,4 +19,11 @@ export default function App() {
     </div>
     </>
   )
+
+  function updateUser() {
+    const f = async () => {
+      setUser(await getUser())
+    }
+    f()
+  }
 }
