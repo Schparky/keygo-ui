@@ -1,3 +1,4 @@
+import { getToken } from './token'
 
 export const POST   = async (uri: string, body?: string) => await wrappedFetch('post'  , uri, body)
 export const GET    = async (uri: string      ) => await wrappedFetch('get'   , uri      )
@@ -7,7 +8,7 @@ export const DELETE = async (uri: string, body: string) => await wrappedFetch('d
 // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch#Supplying_request_options
 export async function wrappedFetch(method: string, url: string, body?: string) {
   const headers = {
-    // Authorization: 'abc123token', //getAuthzHeader(),
+    Authorization: 'Bearer ' + getToken(),
   }
 
   // when dealing with FormData, i.e., when uploading files, allow the browser to set the request up

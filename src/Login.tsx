@@ -2,9 +2,9 @@ import { GET } from './data/api'
 import { getClientID } from './data/token'
 
 interface Provider {
-  Key: string;
-  Name: string;
-  RedirectURL: string;
+  Key: string
+  Name: string
+  RedirectURL: string
 }
 
 export default function Login() {
