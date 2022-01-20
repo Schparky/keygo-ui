@@ -5,25 +5,23 @@ import Profile from './Profile'
 import { useEffect, useState } from 'react'
 
 export default function App() {
-  const [user, setUser] = useState<User | null>(null)
+	const [user, setUser] = useState<User | null>(null)
 
-  useEffect(() => updateUser, [])
+	useEffect(() => updateUser, [])
 
-  return (
-    <>
-    <div>
-      <Login />
-    </div>
-    <div>
-      {user && <Profile user={user} /> }
-    </div>
-    </>
-  )
+	return (
+		<>
+			<div>
+				<Login />
+			</div>
+			<div>{user && <Profile user={user} />}</div>
+		</>
+	)
 
-  function updateUser() {
-    const f = async () => {
-      setUser(await getUser())
-    }
-    f()
-  }
+	function updateUser() {
+		const f = async () => {
+			setUser(await getUser())
+		}
+		f()
+	}
 }
