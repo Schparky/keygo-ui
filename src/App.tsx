@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react'
 export default function App() {
 	const [user, setUser] = useState<User | null>(null)
 
-	useEffect(() => updateUser, [])
+	useEffect(() => updateUser(), [])
 
 	return (
 		<>
